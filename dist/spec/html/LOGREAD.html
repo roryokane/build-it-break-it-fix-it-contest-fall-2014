@@ -1,0 +1,94 @@
+<h1>logread</h1>
+<p><code>logread</code> queries the state of the gallery. It prints which employees and
+guests are in the gallery or its rooms, and allows for various
+time-based queries of the state of the gallery. The following
+invocations <em>must</em> be supported:</p>
+<pre><code>logread -K &lt;token&gt; [-H] -S &lt;log&gt;
+logread -K &lt;token&gt; [-H] -R (-E &lt;name&gt; | -G &lt;name&gt;) &lt;log&gt;
+</code></pre>
+<p>The following invocations are <em>optional</em> (for extra points):</p>
+<pre><code>logread -K &lt;token&gt; -T (-E &lt;name&gt; | -G &lt;name&gt;) &lt;log&gt;
+logread -K &lt;token&gt; [-H] -I (-E &lt;name&gt; | -G &lt;name&gt;) [(-E &lt;name&gt; | -G &lt;name&gt;) ...] &lt;log&gt;
+logread -K &lt;token&gt; [-H] -A -L &lt;lower&gt; -U &lt;upper&gt; &lt;log&gt;
+logread -K &lt;token&gt; [-H] -B -L &lt;lower1&gt; -U &lt;upper1&gt; -L &lt;lower2&gt; -U &lt;upper2&gt; &lt;log&gt;
+</code></pre>
+<p>Here is an example invocation</p>
+<pre><code>./logread -K secret -B -L 2 -U 5 -L 7 -U 9 path/to/log
+James,Matt
+</code></pre>
+<p>As per the above invocations, only one of <code>-S</code>, <code>-R</code>, <code>-T</code>, <code>-I</code>, <code>-A</code>, or <code>-B</code> may be specified at once.
+Normal output from <code>logread</code> is whitespace sensitive, HTML output will be run through <a href="http://tidy.sourceforge.net/">html-tidy</a> before being scored (i.e., superfluous spacing between HTML tags is not important).</p>
+<p>In what follows, we refer to employees or visitors who are 'in the
+gallery'. Each person is expected to first enter the gallery (using
+<code>logappend</code> option <code>-A</code>) prior to entering any particular room of the
+gallery. Once in the gallery, he or she may enter and leave various
+rooms (using <code>logappend</code> options <code>-A -R</code> and options <code>-L -R</code>,
+respectively). Finally, the person will leave the gallery (using <code>logappend</code>
+option <code>-L</code>). During this whole sequence of events, a person is
+considered to be 'in the gallery'. See the <a href="EXAMPLES.html">examples</a>
+for more information.</p>
+<p>When output elements are comma-separated lists, there will be no spaces before or after the commas.</p>
+<ul>
+<li>
+<p><code>-K</code> <em>token</em> Token used to authenticate the log. This token consists of an arbitrary sized string of alphanumeric characters and will be the same between executions of <code>logappend</code> and <code>logread</code>. If the log cannot be 
+authenticated with the token (i.e., it is not the same token that was used to create the file), then "security error" should be printed to stderr and -1 should be returned.</p>
+</li>
+<li>
+<p><code>-H</code> Specifies output to be in HTML (as opposed to plain text). Details in options below.</p>
+</li>
+<li>
+<p><code>-S</code> Print the current state of the log to stdout. The state should
+   be printed to stdout on at least two lines, with lines separated by
+   the <code>\n</code> (newline) character. The first line should be a
+   comma-separated list of employees currently in the gallery. The
+   second line should be a comma-separated list of guests currently in
+   the gallery. The remaining lines should provide room-by-room
+   information indicating which guest or employee is in which
+   room. Each line should begin with a room ID, printed as a decimal
+   integer, followed by a colon, followed by a space, followed by a
+   comma-separated list of guests and employees. Room IDs should be
+   printed in ascending integer order, all guest/employee names should
+   be printed in ascending lexicographic string order.  If -H is
+   specified, the output should instead be formatted as HTML
+   conforming to the following <a href="STATE_HTML.html">HTML specification</a>.</p>
+</li>
+<li>
+<p><code>-R</code> Give a list of all rooms entered by an employee or guest. Output the list of rooms in chronological order. If this argument is specified, either -E or -G must be specified. The list is printed to stdout in one comma-separated list of room identifiers. If -H is specified, the format should instead by in HTML conforming to the following <a href="ROOM_HTML.html">HTML specification</a>. </p>
+</li>
+<li>
+<p><code>-T</code> Gives the total time spent in the gallery by an employee or guest. If the employee or guest is still in the gallery, print the time spent so far. Output in an integer on a single line. Specifying -T and -H is not valid. This feature is optional. If the specified employee or guest does not appear in the gallery, then nothing is printed.</p>
+</li>
+<li>
+<p><code>-I</code> Prints the rooms, as a comma-separated list of room IDs, that were occupied by all the specified employees and guests at the same time over the complete history of the gallery. Room IDs should be printed in ascending numerical order. If -H is specified, the output should instead be HTML conforming to the following <a href="IDS_HTML.html">HTML specification</a>. This feature is optional. If a specified employee or guest does not appear in the gallery, it is ignored. If no room ever contained all of the specified persons, then nothing is printed.</p>
+</li>
+<li>
+<p><code>-A</code> Must be followed by a time bound specified by -L and -U. Outputs a list of employees (in a comma-separated list) in the gallery during the specified time boundary, for example -L x -U y should print employees present during the interval [x,y]. Not valid if only one of -L and -U is supplied, or the -U value is greater than the -L value. Names should be printed in ascending lexicographical string order. If -H is specified, the output should instead be HTML conforming to the following <a href="PRESENT_HTML.html">HTML specification</a>. This feature is optional.</p>
+</li>
+<li>
+<p><code>-B</code> Must be followed by a pair of time bounds specified by -L and -U. Outputs a list of employees (in a comma-separated list)  in the gallery during the first time boundary <em>but not the second</em>. Names should be printed in ascending lexicographical string order. If -H is specified, the output should instead be HTML conforming to the following <a href="BOUNDS_HTML.html">HTML specification</a>. This feature is optional.</p>
+</li>
+<li>
+<p><code>-E</code> Employee name. May be specified multiple times. </p>
+</li>
+<li>
+<p><code>-G</code> Guest name. May be specified multiple times. </p>
+</li>
+<li>
+<p><code>-L</code> Lower time bound in seconds. May be specified multiple times. Always followed by -U. The range is inclusive on both lower and upper bounds, and requires the -L value to be less than or equal to the -U value. </p>
+</li>
+<li>
+<p><code>-U</code> Upper time bound in seconds. May be specified multiple times. As mentioned above, the bound is inclusive.</p>
+</li>
+<li>
+<p><code>log</code> The path to the file log used for recording events. The filename may be specified with a string of alphanumeric characters. </p>
+</li>
+</ul>
+<p>If <code>logread</code> is given an employee or guest name that does not exist in the log, it should print nothing about that employee (which may result in empty output). If <code>logread</code> is given an employee or guest name that does not exist in the log, and HTML output is specified, <code>logread</code> should output an HTML table with no entries.</p>
+<p>If <code>logread</code> cannot validate that an entry in the log was created with an invocation of <code>logappend</code> using a matching token, then <code>logread</code> should return a -1 and print "integrity violation" to <code>stderr</code>.</p>
+<h2>Return values and error conditions</h2>
+<p>Some examples of conditions that would result in printing "invalid" or "integrity violation" (and return -1):</p>
+<ul>
+<li><code>-I</code> or <code>-T</code> used specifying an employee that does not exist in the log, should print nothing and exit with return 0</li>
+<li>If the logfile has been corrupted, the program should exit and print "integrity violation" to stderr and exit with return -1</li>
+<li>Intersection queried via <code>-A</code> or <code>-B</code> does not exist, should print nothing and exit with return -1</li>
+</ul>

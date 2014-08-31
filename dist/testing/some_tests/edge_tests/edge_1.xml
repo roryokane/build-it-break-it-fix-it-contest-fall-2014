@@ -1,0 +1,56 @@
+<test type="correctness">
+  <commands>
+    <command><args>-T 1 -K BCDBDJHE -E ROSITA -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 2 -K BCDBDJHE -G CHANTEL -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 3 -K BCDBDJHE -G CHANTEL -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 4 -K BCDBDJHE -E ROSITA -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 5 -K BCDBDJHE -E MATT -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 6 -K BCDBDJHE -G NOLA -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 7 -K BCDBDJHE -E MATT -A -R 6 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 8 -K BCDBDJHE -E MATT -L -R 6 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 9 -K BCDBDJHE -E MATT -A -R 0 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 10 -K BCDBDJHE -E MATT -L -R 0 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 11 -K BCDBDJHE -E MATT -A -R 7 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 12 -K BCDBDJHE -G NOLA -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 13 -K BCDBDJHE -G KELLEY -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 14 -K BCDBDJHE -G KELLEY -A -R 5 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 15 -K BCDBDJHE -E MATT -L -R 7 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 16 -K BCDBDJHE -E MATT -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 17 -K BCDBDJHE -G KELLEY -L -R 5 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 18 -K BCDBDJHE -G KELLEY -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 19 -K BCDBDJHE -G ANJELICA -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 20 -K BCDBDJHE -G ANJELICA -A -R 3 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 21 -K BCDBDJHE -G ANJELICA -L -R 3 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 22 -K BCDBDJHE -G ANJELICA -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 23 -K BCDBDJHE -G SPARKLE -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 24 -K BCDBDJHE -G SPARKLE -A -R 15 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 25 -K BCDBDJHE -G SPARKLE -L -R 15 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 26 -K BCDBDJHE -G SPARKLE -A -R 6 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 27 -K BCDBDJHE -G SPARKLE -L -R 6 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 28 -K BCDBDJHE -G SPARKLE -A -R 8 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 29 -K BCDBDJHE -G SPARKLE -L -R 8 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 18 -K BCDBDJHE -G SPARKLE -L RUDILPEK</args><program>logappend</program><erroutput>invalid</erroutput><returncode>-1</returncode></command>
+    <command><args>-T 30 -K BCDBDJHE -G SPARKLE -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 31 -K BCDBDJHE -G RUTHANN -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 32 -K BCDBDJHE -E TAMMIE -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 33 -K BCDBDJHE -G ISAIAH -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 34 -K BCDBDJHE -G ISAIAH -A -R 14 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 35 -K BCDBDJHE -E SUSIE -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 36 -K BCDBDJHE -E TAMMIE -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 37 -K BCDBDJHE -G ISAIAH -L -R 14 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 38 -K BCDBDJHE -G ISAIAH -A -R 3 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 39 -K BCDBDJHE -E SUSIE -A -R 12 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 40 -K BCDBDJHE -G CIARA -A RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 41 -K BCDBDJHE -G CIARA -A -R 14 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 42 -K BCDBDJHE -G RUTHANN -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 43 -K BCDBDJHE -G CIARA -L -R 14 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 44 -K BCDBDJHE -G CIARA -A -R 10 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 45 -K BCDBDJHE -E SUSIE -L -R 12 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 46 -K BCDBDJHE -E SUSIE -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 47 -K BCDBDJHE -G ISAIAH -L -R 3 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 48 -K BCDBDJHE -G ISAIAH -A -R 12 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 49 -K BCDBDJHE -G CIARA -L -R 10 RUDILPEK</args><program>logappend</program></command>
+    <command><args>-T 50 -K BCDBDJHE -G CIARA -L RUDILPEK</args><program>logappend</program></command>
+    <command><args>-K BCDBDJHE -S RUDILPEK</args><program>logread</program><output>
+ISAIAH
+12: ISAIAH</output><erroutput /><returncode>0</returncode></command></commands></test>

@@ -1,0 +1,35 @@
+<h1>logread -S HTML</h1>
+<p>The state should be printed out as two tables. The first table should be two columns 
+and list all of the employees and guests. The second table should be two columns
+and list room IDs and occupants. If a room is occupied by more than one person, the 
+occupant field should be a comma-separated (with no whitespace) list of the occupants
+of that room.</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+&lt;table&gt;
+&lt;tr&gt;
+  &lt;th&gt;Employee&lt;/th&gt;
+  &lt;th&gt;Guest&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Employee1&lt;/td&gt;
+  &lt;td&gt;Guest1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;tr&gt;
+  &lt;th&gt;Room ID&lt;/th&gt;
+  &lt;th&gt;Occupants&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;1&lt;/td&gt;
+  &lt;td&gt;Guest1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;2&lt;/td&gt;
+  &lt;td&gt;Employee1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>

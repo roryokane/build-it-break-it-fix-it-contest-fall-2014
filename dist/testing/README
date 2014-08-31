@@ -1,0 +1,117 @@
+Test cases are specified using an XML format explained in the contest
+specification. Here we provide some programs to help you read, write,
+and run tests for your own implementation.
+
+There are three programs:
+
+sim.py : generates a random test
+print_test.py : pretty-prints a test
+check_test.py : runs a test
+
+There are also a bunch of tests in the directory some_tests/. In fact,
+these are the tests we use for correctness testing of your project.
+
+sim.py
+------
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --steps TIMESTEPS     time steps to run simulation for
+  --seed SEED           seed for RNG
+  --out OUT             base filename of the test that is produced (with .xml suffix)
+  --batch BATCH         do batch file
+  --test TEST           test kind summary|time|rooms|emphistory|roomhistory|exclusivebounds
+  --html HTML           do HTML output
+
+Randomly generates a test. The test will have a number of events specified by 
+--steps and you can pass --seed to the RNG to make the process more deterministic. 
+At the end of a series of steps the sim will write out a query with one of the types
+of tests specified by --test, the default is "summary". The logfile is
+a randomly named file placed in the current directory. If no --out argument is given, 
+the file out.xml is used.
+
+Here is an example invocation:
+
+./sim.py --steps 2
+
+This might produce the test
+
+<test type="correctness">
+  <commands>
+    <command>
+      <args>-T 1 -K SMVGSEJK -E SUK -A UHALYLWO</args>
+      <program>logappend</program>
+    </command>
+    <command>
+      <args>-K SMVGSEJK -S UHALYLWO</args>
+      <program>logread</program>
+      <output>SUK
+</output>
+      <erroutput />
+      <returncode>0</returncode>
+    </command>
+  </commands>
+</test>
+
+This test will take two steps: one logappend, and one logread. In this
+case, an employee, SUK, enters the gallery. The parameter UHALYLWO is
+the generated logfile name. The query makes sure that SUK is indeed in 
+the gallery.
+
+
+print_test.py
+-------------
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --xml XML   test xml input
+
+Prints a test, its input file, command lines, and expected outputs. 
+Specify the path to the test with --xml. 
+
+For the example above, the output is:
+
+./print_test.py --xml out.xml
+
+Input commands
+logappend -T 1 -K SMVGSEJK -E SUK -A UHALYLWO 
+stdout == 
+stderr == 
+returncode == 0
+logread -K SMVGSEJK -S UHALYLWO 
+stdout == SUK
+
+stderr == 
+returncode == 0
+Input files
+
+check_test.py
+-------------
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --prefix PREFIX       program prefix
+  --xml XML             test xml input
+  --keep-logfile KEEPLOG
+                        do not auto-erase the log file output
+
+Runs a test against an implementation. check_test will try and Popen 
+"logappend" or "logread", so specify the path to the *directory* where 
+those programs are with --prefix and the path to the XML test file with
+--xml. check_test will print expected and actual out, err and return code
+for each command.
+
+So, if logappend and logread were in the directory ~/build then you
+could run the previously generated test by doing
+
+./check_test.py --prefix ~/build --xml out.xml
+
+['/home/ubuntu/build/logappend', '-T', '1', '-K', 'SMVGSEJK', '-E', 'SUK', '-A', 'UHALYLWO']
+expected out  got 
+expected err  got 
+expected return 0 got 0
+['/home/munin/build/logread', '-K', 'SMVGSEJK', '-S', 'UHALYLWO']
+expected out SUK
+ got SUK
+ expected err  got 
+ expected return 0 got 0

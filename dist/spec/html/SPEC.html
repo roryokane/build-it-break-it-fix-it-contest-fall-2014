@@ -1,0 +1,58 @@
+<h1>Programming Problem: Secure Log File</h1>
+<h2>Changelog</h2>
+<ul>
+<li>[8/29/14 10:00AM] Clarified that a name only contains the alphabetical characters (a-z, A-Z).</li>
+</ul>
+<h2>Summary</h2>
+<p>Players will implement a <em>secure log</em> to describe the <em>state
+of an art gallery</em>: the guests and employees who have entered and left,
+and persons that are in rooms. The log will be used by <em>two
+programs</em>. One program, <code>logappend</code>, will append new information to this file,
+and the other, <code>logread</code>, will read from the file and display the state of the art
+gallery according to a given query over the log.  Both programs will
+use an authentication token, supplied as a command-line argument, to
+authenticate each other; the security model is described in more
+detail below.</p>
+<h2>Programs</h2>
+<p>Players design the log format and implement both <code>logappend</code> and
+<code>logread</code> to use it.
+These programs can be written in any
+programming language(s) of the contestants' choice as long as they can
+be built and executed on the <a href="VM.html">Linux VM</a> provided by the
+organizers. Each program's description is linked below.</p>
+<ul>
+<li>The <a href="LOGAPPEND.html"><code>logappend</code></a> program appends data to a log </li>
+<li>The <a href="LOGREAD.html"><code>logread</code></a> program reads and queries data from the log </li>
+</ul>
+<p><code>logread</code> contains a number of features that are optional.</p>
+<h2>Examples</h2>
+<p>Look at the page of <a href="EXAMPLES.html">examples</a> for examples of using the <code>logappend</code> and <code>logread</code> tools together. </p>
+<h2>Security Model</h2>
+<p>The system as a whole must guarantee the privacy and integrity of the log in
+the presence of an adversary that does not know the authentication token. This token
+is used by both the <code>logappend</code> and <code>logread</code> tools, specified on the command
+line. <em>Without knowledge of the token</em> an attacker should <em>not</em> be able to:</p>
+<ul>
+<li>Query the logs via <code>logread</code> or otherwise learn facts
+  about the names of guests, employees, room numbers, or times by
+  inspecting the log itself</li>
+<li>Modify the log via <code>logappend</code>. </li>
+<li>Fool <code>logread</code> or <code>logappend</code> into accepting a bogus file. In
+  particular, modifications made to the log by means other than correct use of <code>logappend</code> should be detected by (subsequent calls to) <code>logread</code> or <code>logappend</code> when the correct token is supplied</li>
+</ul>
+<h2>Build-it Round Submission</h2>
+<p>Each build-it team should
+initialize a git repository on either <a href="https://github.com/">github</a> or <a href="https://bitbucket.org/">bitbucket</a> and share it 
+with the <code>bibifi</code> user on either of those services. Create a directory 
+named <code>build</code> in the top-level directory of this repository and commit your code into that folder. Your 
+submission will be scored after every push to the repository. (Beware making your
+repository public, or other contestants might be able to see it!)</p>
+<p>To score a submission, an automated system will first invoke <code>make</code> in the <code>build</code>
+directory of your submission. The only requirement on <code>make</code> is that it 
+must function without internet connectivity, and that it must return within 
+ten minutes. </p>
+<p>Once make finishes, <code>logread</code> and <code>logappend</code> should be executable 
+files within the <code>build</code> directory. An automated system will invoke them with a 
+variety of options and measure their responses. </p>
+<h2>Break-it Round and Scoring</h2>
+<p>A separate document describes the <a href="BREAK.html">Break-it Round</a> activities, and another provides information on <a href="SCORE.html">scoring</a>.</p>

@@ -1,0 +1,17 @@
+From the board in Mikes office
+
+Correctness:
+ - assume empty log, OR, start with exiting log
+ - run log append with key, N times
+ - query
+ - expected output
+
+Secrecy:
+ - assume log with no key or transcript for the log
+ - query with key OR query response from stdout
+ - expected output should match in either case
+
+Integrity:
+ - assume log with no key, but with transcript
+ - provide substitute log file 
+ - query with original key should produce different output

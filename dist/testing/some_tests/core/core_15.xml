@@ -1,0 +1,5 @@
+<test type="correctness"><commands><command><args>-T 1 -K PBVSMQMI -E CYNTHIA -A UZKXOFJR</args><program>logappend</program></command><command><args>-T 2 -K PBVSMQMI -E CYNTHIA -A -R 19 UZKXOFJR</args><program>logappend</program></command><command><args>-T 3 -K PBVSMQMI -E CYNTHIA -L -R 19 UZKXOFJR</args><program>logappend</program></command><command><args>-T 4 -K PBVSMQMI -E CYNTHIA -A -R 13 UZKXOFJR</args><program>logappend</program></command><command><args>-K PBVSMQMI -H -S UZKXOFJR</args><program>logread</program><output>&lt;html&gt;&lt;body&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Employee&lt;/th&gt;&lt;th&gt;Guest&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;
+&lt;tr&gt;&lt;td&gt;CYNTHIA&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tr&gt;&lt;/table&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Room ID&lt;/th&gt;&lt;th&gt;Occupants&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;13&lt;/td&gt;
+&lt;td&gt;CYNTHIA&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</output><erroutput /><returncode>0</returncode></command></commands></test>

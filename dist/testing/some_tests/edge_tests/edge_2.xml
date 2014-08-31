@@ -1,0 +1,56 @@
+<test type="correctness">
+  <commands>
+    <command><args>-T 1 -K NLYXFEKO -G CLAIRE -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 2 -K NLYXFEKO -G CLAIRE -A -R 10 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 3 -K NLYXFEKO -G CATHLEEN -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 4 -K NLYXFEKO -G INGE -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 5 -K NLYXFEKO -G INGE -A -R 16 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 6 -K NLYXFEKO -E DEMETRIA -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 7 -K NLYXFEKO -G CLAIRE -L -R 10 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 8 -K NLYXFEKO -G CLAIRE -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 9 -K NLYXFEKO -E DEEDEE -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 10 -K NLYXFEKO -G MELITA -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 11 -K NLYXFEKO -E AMIE -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 12 -K NLYXFEKO -E CELESTINA -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 13 -K NLYXFEKO -G CATHLEEN -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 14 -K NLYXFEKO -G VALENTIN -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 15 -K NLYXFEKO -G YOUNG -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 16 -K NLYXFEKO -E AMIE -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 5 -K NLYXFEKO -G YOUNG -A -R 15 MQIZLKHS</args><program>logappend</program><erroutput>invalid</erroutput><returncode>-1</returncode></command>
+    <command><args>-T 17 -K NLYXFEKO -G YOUNG -A -R 15 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 18 -K NLYXFEKO -G MELITA -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 19 -K NLYXFEKO -G BENITO -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 20 -K NLYXFEKO -G BENITO -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 21 -K NLYXFEKO -G DARIO -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 22 -K NLYXFEKO -E LOUELLA -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 23 -K NLYXFEKO -E DEMETRIA -A -R 8 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 24 -K NLYXFEKO -G YOUNG -L -R 15 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 25 -K NLYXFEKO -G YOUNG -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 26 -K NLYXFEKO -G VALENTIN -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 27 -K NLYXFEKO -G LORI -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 28 -K NLYXFEKO -E BRITTNI -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 29 -K NLYXFEKO -E AILEEN -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 30 -K NLYXFEKO -E CELESTINA -A -R 2 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 31 -K NLYXFEKO -E BRITTNI -A -R 12 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 32 -K NLYXFEKO -E CELESTINA -L -R 2 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 33 -K NLYXFEKO -E CELESTINA -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 34 -K NLYXFEKO -E DEMETRIA -L -R 8 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 35 -K NLYXFEKO -E DEMETRIA -A -R 9 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 36 -K NLYXFEKO -E AILEEN -A -R 9 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 37 -K NLYXFEKO -E DEEDEE -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 38 -K NLYXFEKO -G LORI -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 39 -K NLYXFEKO -E BRYANNA -A MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 40 -K NLYXFEKO -E AILEEN -L -R 9 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 41 -K NLYXFEKO -E AILEEN -A -R 11 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 42 -K NLYXFEKO -E BRITTNI -L -R 12 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 43 -K NLYXFEKO -E BRITTNI -A -R 7 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 44 -K NLYXFEKO -E BRITTNI -L -R 7 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 45 -K NLYXFEKO -E BRITTNI -A -R 4 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 46 -K NLYXFEKO -E AILEEN -L -R 11 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 47 -K NLYXFEKO -E AILEEN -A -R 14 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 48 -K NLYXFEKO -E BRYANNA -A -R 0 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 49 -K NLYXFEKO -E DEMETRIA -L -R 9 MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-T 50 -K NLYXFEKO -E DEMETRIA -L MQIZLKHS</args><program>logappend</program></command>
+    <command><args>-K NLYXFEKO -R -E BRITTNI MQIZLKHS</args><program>logread</program><output>12,7,4</output><erroutput /><returncode>0</returncode></command>
+  </commands>
+</test>

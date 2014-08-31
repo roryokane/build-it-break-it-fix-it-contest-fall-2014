@@ -1,0 +1,3 @@
+<test type="correctness"><commands><command><args>-T 1 -K YVCNFAHM -E RUDY -A CDNLSXFF</args><program>logappend</program></command><command><args>-T 2 -K YVCNFAHM -E RUDY -A -R 3 CDNLSXFF</args><program>logappend</program></command><command><args>-T 3 -K YVCNFAHM -E ALICA -A CDNLSXFF</args><program>logappend</program></command><command><args>-T 4 -K YVCNFAHM -G TOMMY -A CDNLSXFF</args><program>logappend</program></command><command><args>-K YVCNFAHM -S CDNLSXFF</args><program>logread</program><output>ALICA,RUDY
+TOMMY
+3: RUDY</output><erroutput /><returncode>0</returncode></command></commands></test>
