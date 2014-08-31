@@ -45,6 +45,47 @@ def parse_args(args)
 	options
 end
 
+if false # sitll in development
+	def abstracted_parse_args(args_info)
+		options = Hash.new
+		
+		while args.length > 0
+			arg = args.shift
+			
+			handler = args_info[arg][:handler]
+			handler.call(args)
+			
+			case arg
+			when "-T"
+				timestamp_arg = args.shift
+				raise BIBIFI::InvalidError.new if timestamp_arg.nil?
+				options[:timestamp] = timestamp_arg.to_i
+			else # it’s the <log> argument
+				raise BIBIFI::InvalidError.new if options[:log_file] # only allow one log to be specified
+				options[:log_file] = arg
+			end
+		end
+		
+		options
+	end
+	
+	args_info = Hash.new do |hash, key|
+		# default arg handler
+		
+	end.merge({
+		"-T" => {
+			takes_arg: true,
+			handler: lambda do
+				timestamp_arg = args.shift
+				raise BIBIFI::InvalidError.new if timestamp_arg.nil?
+				options[:timestamp] = timestamp_arg.to_i
+			end,
+		},
+	})
+	abstracted_parse_args(args_info)
+end
+
+
 def validate_options(options, batch_is_allowed=true)
 	incompatible_options = {
 		mutually_exclusive: [
@@ -55,20 +96,7 @@ def validate_options(options, batch_is_allowed=true)
 			[:batch_file, [:timestamp, :token, :employee_name, :guest_name, :arrival, :departure, :room_id]],
 		],
 	}
-	incompatible_options[:mutually_exclusive].each do |option1, option2|
-		if options[option1] && options[option2]
-			raise BIBIFI::InvalidError.new
-		end
-	end
-	incompatible_options[:one_incompatible_with_many].each do |one, many|
-		if options[one]
-			many.each do |option|
-				if options[option]
-					raise BIBIFI::InvalidError.new
-				end
-			end
-		end
-	end
+	validate_options_against_incompatible_options(options, incompatible_options)
 	
 	if ! options[:batch_file]
 		required_options = [:timestamp, :token]
@@ -76,24 +104,14 @@ def validate_options(options, batch_is_allowed=true)
 			[:arrival, :departure],
 			[:employee_name, :guest_name]
 		]
-		required_options.each do |option|
-			if ! options[option]
-				raise BIBIFI::InvalidError.new
-			end
-		end
-		options_where_at_least_one_is_required.each do |option_set|
-			num_options_used = option_set.map do |option|
-				(!! options[option]) ? 1 : 0
-			end.reduce(:+)
-			if num_options_used == 0
-				raise BIBIFI::InvalidError.new
-			end
-		end
+		validate_required_options(options, required_options)
+		validate_options_where_at_least_one_is_required(options, options_where_at_least_one_is_required)
 	end
 	if !batch_is_allowed && options[:batch_file]
 		raise BIBIFI::InvalidError.new
 	end
 end
+
 
 def delegate_operation_with_options(options)
 	if options[:batch_file]
@@ -148,7 +166,7 @@ def event_from_options(options)
 		event[:person] = {type: :guest, name: options[:guest_name]}
 	end
 	event[:room_id] = options[:room_id]
-	p event # DEBUG
+	#p event # DEBUG
 	return event
 end
 
@@ -158,11 +176,12 @@ def validate_event_against_log(event, log)
 	# TODO check anything else I need to validate
 end
 
-while_printing_errors(true) do
+
+while_printing_errors(false) do
 	args = ARGV
-	p args # DEBUG
+	#p args # DEBUG
 	options = parse_args(args)
-	p options # DEBUG
+	#p options # DEBUG
 	
 	validate_options(options)
 	delegate_operation_with_options(options)
