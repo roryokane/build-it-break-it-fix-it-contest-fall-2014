@@ -26,7 +26,7 @@ test: build
 
 .PHONY: clean
 clean:
-	rm -f $(BIN_FOLDER)/*
+	rm -f $(EXECUTABLES)
 
 
 $(BIN_FOLDER)/logappend: $(SRC_FOLDER)/header.rb $(SRC_FOLDER)/logappend-body.rb
