@@ -63,10 +63,10 @@ I did not abstract the options parsing as much as I could have. When I considere
 
 ### Skills and domains
 
-* I learned more about what is need to save a file securely. I learned that a password cannot be used as a key for AES – it must be passed through a key-stretching function like PBKDF2 first.
+* I learned more about what is needed to save a file securely. I learned that a password cannot be used as a key for AES – it must be passed through a key-stretching function like PBKDF2 first.
 * Ruby is not set up for completely immutable data structures. Ruby does not provide methods for changing a `Hash` without modifying the original. So just use a mutable one and add `!` to the end of the names of relevant methods.
 * I relearned the syntax for certain features of `make` and Makefiles, like `.PHONY`. I wrote a summary of the features I learned about in a file on my computer. I will be able to use `make` more easily next time by referencing it.
-* I used a mix of plain data structures and objects: log events were Hashes, and gallery states were `GalleryState` objects. I did not use those objects in code enough to be sure whether they are the most efficient organization, but it worked decently at least.
+* I used a mix of plain data structures and objects: log events were Hashes, and gallery states were `GalleryState` objects. I did not use those objects in code enough to be sure whether they are the most efficient organization, but it worked decently at least. I have more experience with that style, so I will be able to compare it better to other approaches that I take on future projects.
 
 ### Mistakes
 
