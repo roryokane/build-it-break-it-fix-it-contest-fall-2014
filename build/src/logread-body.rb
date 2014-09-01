@@ -58,6 +58,7 @@ end
 
 
 def validate_options(options, batch_is_allowed=true)
+	# TODO change from copy-pasted version to custom version
 	incompatible_options = {
 		mutually_exclusive: [
 			[:arrival, :departure],
