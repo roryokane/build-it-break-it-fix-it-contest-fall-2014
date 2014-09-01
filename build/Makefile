@@ -2,7 +2,7 @@
 # reference the manual at http://www.gnu.org/software/make/manual/make.html
 
 SRC_FOLDER=src
-BIN_FOLDER=build
+BIN_FOLDER=.
 
 APPEND_BIN=$(BIN_FOLDER)/logappend
 READ_BIN=$(BIN_FOLDER)/logread
