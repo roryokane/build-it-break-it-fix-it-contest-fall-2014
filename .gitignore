@@ -1,1 +1,10 @@
-build
+# test files
+log1
+FFCDPVXY
+
+# non-project files
+builditbreakit-build-vm.tar.gz
+builditbreakit-build-vm
+dist.zip
+signed consent form.pdf
+Log file internal representation plan.md
