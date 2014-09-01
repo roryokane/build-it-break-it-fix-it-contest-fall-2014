@@ -131,14 +131,6 @@ def gallery_state_from_all_events(events)
 end
 
 
-while_printing_errors(true) do
-	log_file = ARGV[0]
-	token = ARGV[1]
-	log = SecureFile.safe_read(log_file, token)
-	#pp log # DEBUG
-	# to start with, assume -S
-	
-end
 while_printing_errors(false) do
 	args = ARGV
 	p args # DEBUG
