@@ -41,11 +41,14 @@ The spec required that we use a Makefile:
 > 
 > Once make finishes, `logread` and `logappend` should be executable files within the `build` directory. An automated system will invoke them with a variety of options and measure their responses. 
 
-Here is [my Makefile]. It builds `logappend` and `logread` out of three files: `header.rb`, `logappend-body.rb`, and `logread-body.rb`. The header is concatenated to the appropriate file to make the final executable. I split the files in this way because the executables had to be single, standalone files. Thus I could not use `require_relative`, because I would have to manually edit my `Makefile` to match those dependencies.
+Here is [my Makefile]. It builds `logappend` and `logread` out of three files: [`header.rb`], [`logappend-body.rb`], and [`logread-body.rb`]. The header is concatenated to the appropriate file to make the final executable. I split the files in this way because the executables had to be single, standalone files. Thus I could not use `require_relative`, because I would have to manually edit my `Makefile` to match those dependencies.
 
 I could not use `require` either – I was prevented from easily using third-party libraries. To use third-party dependencies, I would have had to change my Makefile to vendor the source code of all included libraries, and copy that source code into my binary. Thankfully, the standard library proved to be basically enough for my needs.
 
 [my Makefile]: https://github.com/roryokane/build-it-break-it-fix-it-contest-fall-2014/blob/master/build/Makefile
+[`header.rb`]: https://github.com/roryokane/build-it-break-it-fix-it-contest-fall-2014/blob/master/build/src/header.rb
+[`logappend-body.rb`]: https://github.com/roryokane/build-it-break-it-fix-it-contest-fall-2014/blob/master/build/src/logappend-body.rb
+[`logread-body.rb`]: https://github.com/roryokane/build-it-break-it-fix-it-contest-fall-2014/blob/master/build/src/logread-body.rb
 
 ## Options parsing
 
