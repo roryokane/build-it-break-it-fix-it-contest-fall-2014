@@ -1,3 +1,7 @@
+# build results
+build/logappend
+build/logread
+
 # test files
 log1
 FFCDPVXY
