@@ -1,41 +1,41 @@
 # when specifying this Makefile, feel free to write what you wish you could specify, and then implement a compiler (or write up a cheat sheet in SofOp) for it
 # reference the manual at http://www.gnu.org/software/make/manual/make.html
 
-SRC_FOLDER=src
-BIN_FOLDER=.
+src_folder=src
+bin_folder=.
 
-APPEND_BIN=$(BIN_FOLDER)/logappend
-READ_BIN=$(BIN_FOLDER)/logread
+append_bin=$(bin_folder)/logappend
+read_bin=$(bin_folder)/logread
 
-EXECUTABLES=$(APPEND_BIN) $(READ_BIN)
+executables=$(append_bin) $(read_bin)
 
 .PHONY: build
-build: $(EXECUTABLES)
+build: $(executables)
 
 .PHONY: run-example
 run-example: build
-	hilite $(APPEND_BIN) -T 1 -K secret -A -E Fred log1
-	hilite $(APPEND_BIN) -T 2 -K secret -A -G Jill log1
-	hilite $(APPEND_BIN) -T 3 -K secret -A -E Fred -R 1 log1
-	hilite $(APPEND_BIN) -T 4 -K secret -A -G Jill -R 1 log1
-	hilite $(READ_BIN) -K secret -S log1
+	hilite $(append_bin) -T 1 -K secret -A -E Fred log1
+	hilite $(append_bin) -T 2 -K secret -A -G Jill log1
+	hilite $(append_bin) -T 3 -K secret -A -E Fred -R 1 log1
+	hilite $(append_bin) -T 4 -K secret -A -G Jill -R 1 log1
+	hilite $(read_bin) -K secret -S log1
 
 .PHONY: test
 test: build
-	python dist/testing/check_test.py --prefix $(BIN_FOLDER) --xml dist/testing/some_tests/core/core_1.xml
+	python dist/testing/check_test.py --prefix $(bin_folder) --xml dist/testing/some_tests/core/core_1.xml
 
 .PHONY: clean
 clean:
-	rm -f $(EXECUTABLES)
+	rm -f $(executables)
 
 
-$(BIN_FOLDER)/logappend: $(SRC_FOLDER)/header.rb $(SRC_FOLDER)/logappend-body.rb
-	mkdir -p $(BIN_FOLDER)
-	cat $(SRC_FOLDER)/header.rb $(SRC_FOLDER)/logappend-body.rb > $(APPEND_BIN)
-	chmod +x $(APPEND_BIN)
+$(bin_folder)/logappend: $(src_folder)/header.rb $(src_folder)/logappend-body.rb
+	mkdir -p $(bin_folder)
+	cat $(src_folder)/header.rb $(src_folder)/logappend-body.rb > $(append_bin)
+	chmod +x $(append_bin)
 
-$(BIN_FOLDER)/logread: $(SRC_FOLDER)/header.rb $(SRC_FOLDER)/logread-body.rb
-	mkdir -p $(BIN_FOLDER)
-	cat $(SRC_FOLDER)/header.rb $(SRC_FOLDER)/logread-body.rb > $(READ_BIN)
-	chmod +x $(READ_BIN)
+$(bin_folder)/logread: $(src_folder)/header.rb $(src_folder)/logread-body.rb
+	mkdir -p $(bin_folder)
+	cat $(src_folder)/header.rb $(src_folder)/logread-body.rb > $(read_bin)
+	chmod +x $(read_bin)
 
