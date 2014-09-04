@@ -4,6 +4,9 @@
 src_folder=src
 bin_folder=.
 
+header_file=$(src_folder)/header.rb
+common_files=$(wildcard $(src_folder)/common/*.rb)
+
 append_bin=$(bin_folder)/logappend
 read_bin=$(bin_folder)/logread
 
@@ -29,13 +32,13 @@ clean:
 	rm -f $(executables)
 
 
-$(bin_folder)/logappend: $(src_folder)/header.rb $(src_folder)/logappend-body.rb
+$(bin_folder)/logappend: $(header_file) $(common_files) $(src_folder)/logappend-body.rb
 	mkdir -p $(bin_folder)
-	cat $(src_folder)/header.rb $(src_folder)/logappend-body.rb > $(append_bin)
+	cat $+ > $(append_bin)
 	chmod +x $(append_bin)
 
-$(bin_folder)/logread: $(src_folder)/header.rb $(src_folder)/logread-body.rb
+$(bin_folder)/logread: $(header_file) $(common_files) $(src_folder)/logread-body.rb
 	mkdir -p $(bin_folder)
-	cat $(src_folder)/header.rb $(src_folder)/logread-body.rb > $(read_bin)
+	cat $+ > $(read_bin)
 	chmod +x $(read_bin)
 
