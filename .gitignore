@@ -1,13 +1,19 @@
+# ignore everything …
+*
+# except the following folders
+# (list of all source folders in build)
+!build
+!build/*
+!build/src/*
+!build/src/common/*
+
+# reinstate standard ignore
+.DS_Store
+
 # build results
 build/logappend
 build/logread
 
 # test files
-log1
-FFCDPVXY
-
-# non-project files
-builditbreakit-build-vm.tar.gz
-builditbreakit-build-vm
-dist.zip
-signed consent form.pdf
+build/log1
+build/FFCDPVXY
