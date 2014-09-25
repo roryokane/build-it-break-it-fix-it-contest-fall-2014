@@ -11,7 +11,7 @@ For security, the log file must be readable only by the gallery owner, who passe
 
 **Incomplete**. The Build It round lasted three days (72 hours, from August 28 to August 31). I finished much of the program, including all of the security features, and wrote modules that would ease development of further parts. But I did not finish two required features, `logappend -B` and `logread -R`, in time. I also did not finish arranging my project and its build system so that the automatic contest submission system could actually see my submission.
 
-(**Update**: the contest was extended until 11:59 PM on September 9, 2014 because so few teams submitted a program. I am working on this again. I will update the README again when the round is done.)
+Later, the contest was extended by a week, to end on September 9, 2014, because so few teams submitted a program. I returned to this program and worked on it more, but eventually decided that since my competitors would have a week longer to work on their programs than I originally expected, I would not have a good enough chance at winning to make this contest worth my while.
 
 ## Security
 
