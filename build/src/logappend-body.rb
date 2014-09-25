@@ -45,46 +45,6 @@ def parse_args(args)
 	options
 end
 
-if false # sitll in development
-	def abstracted_parse_args(args_info)
-		options = Hash.new
-		
-		while args.length > 0
-			arg = args.shift
-			
-			handler = args_info[arg][:handler]
-			handler.call(args)
-			
-			case arg
-			when "-T"
-				timestamp_arg = args.shift
-				raise BIBIFI::InvalidError.new if timestamp_arg.nil?
-				options[:timestamp] = timestamp_arg.to_i
-			else # it’s the <log> argument
-				raise BIBIFI::InvalidError.new if options[:log_file] # only allow one log to be specified
-				options[:log_file] = arg
-			end
-		end
-		
-		options
-	end
-	
-	args_info = Hash.new do |hash, key|
-		# default arg handler
-		
-	end.merge({
-		"-T" => {
-			takes_arg: true,
-			handler: lambda do
-				timestamp_arg = args.shift
-				raise BIBIFI::InvalidError.new if timestamp_arg.nil?
-				options[:timestamp] = timestamp_arg.to_i
-			end,
-		},
-	})
-	abstracted_parse_args(args_info)
-end
-
 
 def validate_options(options, batch_is_allowed=true)
 	incompatible_options = {
